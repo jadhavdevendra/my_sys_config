@@ -1,0 +1,32 @@
+<?php
+function my_sys_config_menu() {
+
+  $items = array();
+
+  $items['admin/settings/my_sys_config'] = array(
+    'title' => 'Test title',
+    'description' => 'Test description',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('my_sys_config_frm'),
+    'access arguments' => array('administer nodes'),
+    'type' => MENU_NORMAL_ITEM,
+   );
+
+  return $items;
+}
+
+function my_sys_config_frm() {
+  $form = array();
+
+  $form['my_sys_config_test_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Test field'),
+    '#default_value' => variable_get('my_sys_config_test_text', 'Default text'),
+    '#size' => 100,
+    '#maxlength' => 100,
+    '#description' => t("Test help text."),
+    '#required' => TRUE,
+  );
+
+  return system_settings_form($form);
+}

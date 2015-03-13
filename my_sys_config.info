@@ -1,0 +1,3 @@
+name = My system config
+description = Example system configuration form
+core = 7.x
